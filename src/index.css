@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Night sky theme */
+    --background: 240 30% 8%;
+    --foreground: 280 50% 95%;
+
+    --card: 250 30% 12%;
+    --card-foreground: 280 50% 95%;
+
+    --popover: 250 30% 12%;
+    --popover-foreground: 280 50% 95%;
+
+    --primary: 330 70% 70%;
+    --primary-foreground: 240 30% 8%;
+
+    --secondary: 280 50% 30%;
+    --secondary-foreground: 280 50% 95%;
+
+    --muted: 250 25% 18%;
+    --muted-foreground: 280 30% 70%;
+
+    --accent: 280 60% 70%;
+    --accent-foreground: 240 30% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 250 30% 25%;
+    --input: 250 30% 20%;
+    --ring: 330 70% 60%;
+
+    --radius: 1rem;
+
+    /* Custom romantic night colors */
+    --pink-soft: 330 70% 80%;
+    --pink-medium: 330 70% 65%;
+    --pink-deep: 330 70% 55%;
+    --purple-soft: 280 60% 75%;
+    --purple-medium: 280 50% 60%;
+    --gold-star: 45 100% 75%;
+    --night-dark: 240 40% 5%;
+    --night-medium: 250 35% 12%;
+    --night-light: 260 30% 20%;
+    
+    /* Gradients */
+    --gradient-night: linear-gradient(180deg, hsl(240 40% 5%) 0%, hsl(260 35% 15%) 50%, hsl(280 30% 20%) 100%);
+    --gradient-romantic: linear-gradient(135deg, hsl(250 30% 12% / 0.9) 0%, hsl(280 30% 15% / 0.9) 100%);
+    --gradient-heart: linear-gradient(135deg, hsl(350 80% 65%) 0%, hsl(330 70% 60%) 100%);
+    --gradient-button: linear-gradient(135deg, hsl(330 70% 60%) 0%, hsl(280 60% 55%) 100%);
+    --gradient-shooting-star: linear-gradient(90deg, hsl(0 0% 100%) 0%, hsl(45 100% 80%) 50%, transparent 100%);
+  }
+
+  .dark {
+    --background: 280 30% 10%;
+    --foreground: 330 50% 95%;
+
+    --card: 280 30% 12%;
+    --card-foreground: 330 50% 95%;
+
+    --popover: 280 30% 12%;
+    --popover-foreground: 330 50% 95%;
+
+    --primary: 330 70% 65%;
+    --primary-foreground: 280 30% 10%;
+
+    --secondary: 280 40% 25%;
+    --secondary-foreground: 330 50% 95%;
+
+    --muted: 280 30% 20%;
+    --muted-foreground: 330 30% 65%;
+
+    --accent: 280 50% 35%;
+    --accent-foreground: 330 50% 95%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 280 30% 20%;
+    --input: 280 30% 20%;
+    --ring: 330 70% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-family: 'Quicksand', sans-serif;
+  }
+}
+
+@layer components {
+  .font-romantic {
+    font-family: 'Dancing Script', cursive;
+  }
+
+  .font-body {
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  .night-sky {
+    background: var(--gradient-night);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gradient-button {
+    background: var(--gradient-button);
+  }
+
+  /* Shooting star animation - MƯA SAO BĂNG RƠI THẲNG ĐỨNG */
+  @keyframes shooting-star {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+
+  .shooting-star {
+    position: fixed;
+    width: 3px;
+    height: 120px;
+    background: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(45 100% 80%) 30%, transparent 100%);
+    border-radius: 50%;
+    animation: shooting-star linear forwards;
+    pointer-events: none;
+    z-index: 5;
+    box-shadow: 
+      0 0 10px 3px hsl(0 0% 100% / 0.6),
+      0 0 20px 5px hsl(45 100% 80% / 0.4);
+  }
+
+  .shooting-star::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: hsl(0 0% 100%);
+    border-radius: 50%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 
+      0 0 15px 5px hsl(0 0% 100% / 0.9),
+      0 0 30px 10px hsl(45 100% 80% / 0.6);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Typewriter cursor */
+  .typewriter-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background: hsl(var(--primary));
+    margin-left: 2px;
+    animation: blink 0.8s infinite;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  /* Floating hearts */
+  @keyframes float-heart {
+    0% {
+      transform: translateY(100vh) rotate(0deg) scale(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+      transform: translateY(90vh) rotate(15deg) scale(1);
+    }
+    90% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(-10vh) rotate(-15deg) scale(0.8);
+      opacity: 0;
+    }
+  }
+
+  .floating-heart {
+    position: fixed;
+    animation: float-heart linear forwards;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Twinkling stars */
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+
+  .star {
+    position: fixed;
+    animation: twinkle ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Shake animation */
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+  }
+
+  .shake {
+    animation: shake 0.5s ease-in-out;
+  }
+
+  /* Fade in animation */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+
+  /* Pulse glow */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.4),
+                  0 0 40px hsl(var(--primary) / 0.2);
+    }
+    50% {
+      box-shadow: 0 0 30px hsl(var(--primary) / 0.6),
+                  0 0 60px hsl(var(--primary) / 0.3);
+    }
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Moon glow */
+  @keyframes moon-glow {
+    0%, 100% {
+      filter: drop-shadow(0 0 20px hsl(45 80% 70% / 0.5));
+    }
+    50% {
+      filter: drop-shadow(0 0 35px hsl(45 80% 70% / 0.8));
+    }
+  }
+
+  .moon-glow {
+    animation: moon-glow 3s ease-in-out infinite;
+  }
+
+  /* Sparkle */
+  @keyframes sparkle {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+    50% { transform: scale(1.3) rotate(180deg); opacity: 1; }
+  }
+
+  .sparkle {
+    animation: sparkle 2s ease-in-out infinite;
+  }
+}
