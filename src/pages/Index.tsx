@@ -17,9 +17,9 @@ const Index = () => {
 
       {/* Shooting stars - Sao băng */}
       <ShootingStars />
-      <ShootingStars />
 
       {/* Floating hearts */}
+      <FloatingHearts />
       <FloatingHearts />
       {/* Main content */}
       <main className="relative z-20 min-h-screen flex flex-col items-center justify-center px-6 py-12">
