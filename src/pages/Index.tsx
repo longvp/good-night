@@ -4,6 +4,7 @@ import NightSky from "@/components/NightSky";
 import ShootingStars from "@/components/ShootingStars";
 import TypewriterText from "@/components/TypewriterText";
 import MusicControl from "@/components/MusicControl";
+import ChibiGirl from "@/components/ChibiGirl";
 
 const Index = () => {
   const [showSecondLine, setShowSecondLine] = useState(false);
@@ -72,6 +73,8 @@ const Index = () => {
             ))}
           </div>
         </div>
+
+        <ChibiGirl />
 
         {/* Footer decoration */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
